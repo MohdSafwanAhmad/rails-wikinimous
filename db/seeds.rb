@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#   
+require 'faker'
+Article.delete_all
+10.times do 
+  title = [Faker::Quotes::Rajnikanth.joke, Faker::Quotes::Shakespeare.hamlet_quote, Faker::Book.title].sample
+  content = Faker::Lorem.words(number: 20).join(" ")
+  article = Article.new(title: title, content: content)
+  article.save
+  print article
+end
